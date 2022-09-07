@@ -90,3 +90,5 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **`Summarize what you've learned by answering questions 2 and 3 of your Lab 02 assignment`**
 <br/>
+
+**Upload completed answers from Lab 02 questions to ICON**: <br>
