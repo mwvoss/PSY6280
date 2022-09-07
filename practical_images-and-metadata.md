@@ -87,8 +87,12 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
       * Voxel size
       * Pick someone in your group who's willing to share their drawing
 
+<br/>
+<br/>
 
 **`Summarize what you've learned by answering questions 2 and 3 of your Lab 02 assignment`**
 <br/>
+<br/>
+
 
 **Upload completed answers from Lab 02 questions to ICON**: <br>
