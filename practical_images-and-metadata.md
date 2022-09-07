@@ -46,7 +46,12 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     ![image-coordinate-spaces](images/images-and-metadata_coordinate-spaces.png)
 <br/>
 
+<br/>
+<br/>
+
 **`Summarize the differences between scanner anatomical and voxel coordinates in question 1 of your Lab 02 assignment`**
+<br/>
+<br/>
 <br/>
 
 **Now let's look at how we access this information within an image header**: <br/>
