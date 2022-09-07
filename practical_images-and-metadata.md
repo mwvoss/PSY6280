@@ -14,6 +14,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Download lab assignment questions**: <br/>
 [Lab 2 assignment doc](https://www.dropbox.com/s/6mmzh8dev3dnesy/Lab-02_questions.docx?dl=0)
+<br/>
 
 **Download our data for today**: <br/>
 *  Open the terminal
