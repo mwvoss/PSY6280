@@ -14,6 +14,10 @@ The goal of this lab is to learn the basic process of spatial normalization for 
 https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
+**Download lab assignment questions**: <br>
+[Lab 4 assignment doc](https://www.dropbox.com/s/qhbuv1sf2k2vri7/Lab-04_questions.docx?dl=0) <br>
+<br/>
+
 **Lab data** <br>
 We will continue working with the T1 images from the T1 mixtape directory
 
