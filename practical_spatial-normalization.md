@@ -125,3 +125,7 @@ applywarp -i sub-2801_brain.nii.gz \
 **`You should now see an overlay for both the affine and non-linear registrations. Take a screenshot of your png file and add it to your lab assignment 04 for question 1.`**
 <br/>
 <br/>
+
+**`Use the steps above with another participant in our mixtape and report your results.`**
+<br/>
+<br/>
