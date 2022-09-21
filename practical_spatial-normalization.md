@@ -119,8 +119,9 @@ applywarp -i sub-2801_brain.nii.gz \
 * Add your new non-linear result to your list of overlays comparing alignment with FSL's `slicesdir` program:
 `slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-2801_brain_MNIaff.nii.gz sub-2801_MNInonlin.nii.gz`
 
-</br>
-You should now see an overlay for both the affine and non-linear registrations: 
+<br/>
+<br/>
 
-![image-slicesdir](images/normalization_slicesdir_output_sub2801.png)
-
+**`You should now see an overlay for both the affine and non-linear registrations. Take a screenshot of your png file and add it to your lab assignment 04 for question 1.`**
+<br/>
+<br/>
