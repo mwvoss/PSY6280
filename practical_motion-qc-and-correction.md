@@ -16,6 +16,10 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 
+**Download lab assignment questions**: <br>
+[Lab 6 assignment doc](https://www.dropbox.com/s/puhn220tk0i9lt8/Lab-06_questions.docx?dl=0) <br>
+<br/>
+
 **Lab data** <br>
 We will continue working with the data from our mixtape directories.
 
@@ -33,12 +37,15 @@ Using the code below, make a bash script called `run_mcflirt.sh` to run motion c
         * define the directory where our EPI (functional, bold) data exist (`epiDir`)
         * define the input volume as a variable named `invol`
             * how can this be used later in the script?
-            * why would we do this?
+            * why are we modifying the file set as invol and not over-writing it? (hint, always assume someone would run the script at least twice on the same data)
         * define the output of a command as a variable
             * find one example
         * expression of variables within `echo` commands
             * find one example
         * check if a file exists using an `if-then` statement
+        * send results to a summary .csv and/or .html file
+            * find examples
+            * why are both helpful?
 
 ```
 #!/bin/bash
@@ -47,17 +54,24 @@ sub='2801'
 epiDir=~/fmriLab/bold_image-mixtape
 cd ${epiDir}/sub-${sub}_mc
 invol=${epiDir}/sub-${sub}_task-rest_bold
+declare -i dvols=5
+
+echo "Removing dummy volumes"
+endPoint=$(fslhd "${invol}.nii.gz" | grep "^dim4" | awk '{print int($2)}')
+tsize=$(($endPoint-$dvols))
+fslroi ${invol} ${invol}_dvol ${dvols} ${tsize}
+invol=${invol}_dvol
+echo "Image for motion correction:" ${invol}.nii.gz
 
 echo "Determining middle volume in functional series"
-
 halfPoint=$(fslhd "${invol}.nii.gz" | grep "^dim4" | awk '{print int($2/2)}')
 echo "Middle volume is $halfPoint"
 
 # check if .mat directory output exists and if so delete it
-if [ -d ${invol}*.mat ]
+if [ -d sub-${sub}*.mat ]
 	then 
 		echo "cleaning up existing .mat file output" 
-		rm -R ${invol}*.mat
+		rm -R sub-${sub}*.mat
 	else
 		echo "no existing .mat file detected (OK)"
 fi
@@ -106,7 +120,7 @@ fd_mean=$(awk '{ total += $1; count++ } END { print total/count }' sub-${sub}_mo
 # Compute and plot frame-wise displacement as computed by Jenkinson et al., 2002
 fsl_motion_outliers -i ${invol}.nii.gz \
 -o sub-${sub}_mot_confounds-fdrms \
---fdrms -s sub-${sub}_mot_fdrms-ts.txt -p $sub-${sub}_mot_fdrms-plot 
+--fdrms -s sub-${sub}_mot_fdrms-ts.txt -p sub-${sub}_mot_fdrms-plot 
 # use awk to compute mean of single column
 fdrms_mean=$(awk '{ total += $1; count++ } END { print total/count }' sub-${sub}_mot_fdrms-ts.txt)
 
@@ -130,6 +144,33 @@ echo "This should match mean fdrms (mm) as ${fdrms_mean}"
 echo "Mean FD (Power et al., 2012) was ${fd_mean}"
 
 echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
+
+# write variables to a .csv file
+header="sub","abs_mean","rel_mean","fdrms_mean","fd_power","dvars_mean"
+echo ${header} > ${epiDir}/sub-${sub}_mc/motion_summary.csv
+echo "${sub}","${abs_mean}","${rel_mean}","${fdrms_mean}","${fd_mean}","${dvars_mean}" >> ${epiDir}/sub-${sub}_mc/motion_summary.csv
+
+
+########## Report Output to HTML File ##########
+
+echo "<h1>Motion Summary</h1>" > motionSummary.html
+echo "<h2>Subject: ${sub}</h2>" >> motionSummary.html
+echo "<br>" >> motionSummary.html
+echo "<h2>Rotations and Translations</h2>" >> motionSummary.html
+echo "Mean absolute head displacement: ${abs_mean} <br>" >> motionSummary.html
+echo "<br><br><img src="mot_rot.png" alt="rotations"><br><br><img src="mot_trans.png" alt="translations"><br><br><img src="mot_disp.png" alt="displacement"><hr>" >> motionSummary.html
+echo "<h2>Framewise Displacement (Jenkinson)</h2>" >> motionSummary.html
+echo "Mean relative head displacement (Jenkinson et al., 2002): ${rel_mean} <br>" >> motionSummary.html
+echo "<br><br><img src="sub-${sub}_mot_fdrms-plot.png" <br>" >> motionSummary.html
+echo "<h2>Framewise Displacement (Power)</h2>" >> motionSummary.html
+echo "Mean FD (Power et al., 2012): ${fd_mean} <br>" >> motionSummary.html
+echo "<br><br><img src="sub-${sub}_mot_fd-plot.png" <br>" >> motionSummary.html
+echo "Mean DVARS (Power et al., 2012): ${dvars_mean} <br>" >> motionSummary.html
+echo "<br><br><img src="sub-${sub}_mot_dvars-plot.png" <br>" >> motionSummary.html
+echo "<br>" >> motionSummary.html
+echo "Motion summary: ${epiDir}/sub-${sub}_mc/motionSummary.html"
+######################################################
+
 ```
 
 
@@ -174,8 +215,12 @@ for p in mot_*.png; do eog "$p";done
 * Why might motion estimates be off for our first couple volumes?
 * What is a source of bias in our plots? e.g., is our DVARS an accurate depiction of only motion related changes in BOLD?
     * could you imagine how this property of DVARS is useful if we didn't know there were dummy scans or how many to exclude?
-* Let's see how we could use `fslroi` to prepare our functional image for more accurate motion correction
-    * modify your script to run on the newly prepped functional image
+* What do we need to change to remove dummy volumes in our motion estimates for this subject?
+    * Hint, look at the usage of the function `fsl_motion_outliers`, there are two ways to do this!
+* Now try this script on subject's 2042, 2103
+    * Compare and contrast their head motion using screen shots of your plots as examples
+    * If our threshold for exclusion was an average FD (power) of .5mm, would anyone be excluded?
+    * Summarize your assessment in the lab assignment
 * What would be one way to improve our script for good documentation of output?
 
 
