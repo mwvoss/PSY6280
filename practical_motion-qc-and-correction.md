@@ -214,6 +214,7 @@ echo "Motion summary: ${epiDir}/sub-${sub}_mc/motionSummary.html"
 * Now try this script on subject's 2042, 2103
     * Compare and contrast their head motion using screen shots of your plots as examples
     * If our threshold for exclusion was an average FD (power) of .5mm, would anyone be excluded?
+    * For those participants with motion under an average FD of .5mm, how could we evaluate if there are still volumes contaminated by motion?
     * Summarize your assessment in the lab assignment
 * What would be one way to improve our script for good documentation of output?
 
