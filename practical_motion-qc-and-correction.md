@@ -54,7 +54,7 @@ sub='2801'
 epiDir=~/fmriLab/bold_image-mixtape
 cd ${epiDir}/sub-${sub}_mc
 invol=${epiDir}/sub-${sub}_task-rest_bold
-declare -i dvols=5
+declare -i dvols=0
 
 echo "Removing dummy volumes"
 endPoint=$(fslhd "${invol}.nii.gz" | grep "^dim4" | awk '{print int($2)}')
