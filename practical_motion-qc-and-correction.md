@@ -197,12 +197,6 @@ echo "Motion summary: ${epiDir}/sub-${sub}_mc/motionSummary.html"
 ![image-fd](images/motion_mot-fd.png)
 </br>
 
-**TIP!** <br>
-You can open a set of `.png` files from the terminal with a `loop` command like this: <br>
-```
-for p in mot_*.png; do eog "$p";done
-```
-</br>
 
 **B. Interpretation of FSL-derived volume-to-volume bold intensity estimates** <br> 
 * `DVARS` is the root-mean-square intensity difference of volume N to volume N+1 as proposed by Power et al., 2012. This quantifies the rate of volume-to-volume change in the BOLD signal. Higher values indicate more instances of rapid changes in BOLD signal intensity, which is an indicator of more volumes corrupted by motion. So higher is bad.
