@@ -38,6 +38,7 @@ We will continue working with the data from our mixtape directories.
     * Maintain the High Pass filter as 100s
 ![ ](images/denoising_melodic-input.png)
 </br>
+
 * Pre-Stats tab
     * Maintain MCFLIRT with the default reference image of the middle volume
         * Check out options for `Alternative reference image`: what would be an example?
@@ -45,6 +46,7 @@ We will continue working with the data from our mixtape directories.
     * Change spatial smoothing to 6
     * Maintain the Highpass filter as set "on"
 </br>  
+
 * Registration tab
     * Select a `Main structural image` and select your skull-stripped T1w image from your T1w mixtape directory
     * For the purposes of time we'll run linear registration
