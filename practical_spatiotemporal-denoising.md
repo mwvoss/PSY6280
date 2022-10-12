@@ -100,7 +100,7 @@ We will continue working with the data from our mixtape directories.
         * Respiration: ~.1 - .5 Hz
         * Heart rate: ~.6 - 1.2 Hz
         * Respiration depth: ~ 0 – .03 Hz
-    * Use the decision tree shown in Griffanti et al to step through each component in space, time, and frequency: 
+    * Use the decision tree shown in [Griffanti et al., 2017](https://github.com/mwvoss/PSY6280/blob/main/pdfs/Griffanti-2017-ICA.pdf) to step through each component in space, time, and frequency: 
     ![decision-tree](images/denoising_decision-tree.png)
     * If you are less familiar with activation patterns considered "signal" based on the literature, use the spatial maps shown in the [Smith et al., paper](https://github.com/mwvoss/PSY6280/blob/main/pdfs/Smith-2009-BrainNets.pdf) as a complementary resource.  
 
