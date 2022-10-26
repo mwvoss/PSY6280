@@ -130,6 +130,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Lab assignment**
 * Complete FEAT analyses for all the runs for subjects all three subjects 
+    * check your understanding of our single-subject single-run model with our lab 9 assignment downloaded above
 * For all subjects, `bet` has already been run, and the T1w_brain is in the subject/anat directory
 
 </br>
