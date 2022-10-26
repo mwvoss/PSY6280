@@ -92,9 +92,10 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
         * Contrasts & F-tests tab
             * Our simplest contrast is to compare each category to the scrambled images
             * Are there other contrasts of interest?
+            * An F-test tests an `OR` conditional across conditions (e.g., we may be interested in where there is activation for C1 OR C2 OR C3 OR C4)
             * These contrasts would be set as shown below: <br>
             ![contrasts](images/practical_feat_singlesubject_contrasts.png)
-            * An F-test tests an `OR` conditional across conditions (e.g., we may be interested in where there is activation for C1 OR C2 OR C3 OR C4)
+           
         
 </br>
 
