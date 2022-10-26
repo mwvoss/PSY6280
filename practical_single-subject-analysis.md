@@ -11,7 +11,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 **Download lab assignment questions**: <br>
-[Lab 9 assignment doc](dropbox link) <br>
+[Lab 9 assignment doc](https://www.dropbox.com/s/737my9269f4w20p/Lab-09.docx?dl=0) <br>
 <br/>
 
 
